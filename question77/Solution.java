@@ -12,16 +12,17 @@ import java.util.List;
 public class Solution {
     public void Combine(int n,int k,int index,List<List<Integer>> res,List<Integer> current){
         if(k == 0){
-            List<Integer> temp = new ArrayList<>();
-            for(Integer i:current)
-                temp.add(i);
-            res.add(temp);
+//            List<Integer> temp = new ArrayList<>();
+//            for(Integer i:current)
+//                temp.add(i);
+            res.add(new ArrayList<Integer>(current));
+            return;
         }
         else{
             for(int i = index; i <= n; i++){
                 current.add(i);
                 Combine(n,k-1,i+1,res,current);
-                current.remove((Object)i);
+                current.remove(current.size()-1);
             }
         }
     }
@@ -34,6 +35,6 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution method = new Solution();
-        System.out.println(method.combine(2,3));
+        System.out.println(method.combine(4,3));
     }
 }

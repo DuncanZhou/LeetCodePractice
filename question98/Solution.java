@@ -16,6 +16,13 @@ class TreeNode {
 }
 //递归判断,最后结果为左&右
 public class Solution {
+
+//    public boolean isValidBST(TreeNode root, long minVal, long maxVal) {
+//        if (root == null) return true;
+//        if (root.val >= maxVal || root.val <= minVal) return false;
+//        return isValidBST(root.left, minVal, root.val) && isValidBST(root.right, root.val, maxVal);
+//    }
+
     public boolean inorder(TreeNode root, Stack<Integer> stack){
         //中序遍历,left->root->right
         boolean left = true,right = true;

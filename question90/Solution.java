@@ -26,7 +26,6 @@ public class Solution {
                 flag = true;
                 subset(nums,cur,res,k-1,i+1);
                 cur.remove((Object)nums[i]);
-
             }
         }
     }

@@ -8,7 +8,7 @@ import java.util.List;
  */
 //N后问题
 public class Solution {
-    //检查第k行第col列能不能放,与上一个皇后斜对角也不能放
+    //检查第k行第col列能不能放,与斜着的皇后也不能在一条线
     public boolean Place(int k, int col, int[] position){
         for(int i = 0; i < k; i++){
             if(position[i] == col || Math.abs(col - position[i]) == Math.abs(k - i))
@@ -50,6 +50,6 @@ public class Solution {
     public static void main(String[] args) {
         Solution method = new Solution();
         List<List<String>> results = method.solveNQueens(5);
-        System.out.println(results.size());
+        System.out.println(results);
     }
 }

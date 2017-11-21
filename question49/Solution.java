@@ -8,6 +8,8 @@ import java.util.Map;
 /**
  * Created by duncan on 17-10-27.
  */
+
+//将字符串按照字典顺序排列,然后再作比较
 public class Solution {
     public String Convert(String string){
         int[] numer = new int[26];

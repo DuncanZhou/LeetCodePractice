@@ -11,6 +11,19 @@ import java.util.Stack;
 //简化unix路径
 public class Solution {
     public String simplifyPath(String path) {
+
+
+        //双端队列解决
+//        Deque<String> stack = new LinkedList<>();
+//        Set<String> skip = new HashSet<>(Arrays.asList("..",".",""));
+//        for (String dir : path.split("/")) {
+//            if (dir.equals("..") && !stack.isEmpty()) stack.pop();
+//            else if (!skip.contains(dir)) stack.push(dir);
+//        }
+//        String res = "";
+//        for (String dir : stack) res = "/" + dir + res;
+//        return res.isEmpty() ? "/" : res;
+
         String[] newpath = path.split("/");
         Stack<String> res = new Stack<>();
         int i = 0;
@@ -29,20 +42,12 @@ public class Solution {
             }
             i ++;
         }
-        StringBuilder results = new StringBuilder();
-        //将res栈重新转换
-        Stack<String> newres = new Stack<>();
-        while(!res.isEmpty())
-            newres.add(res.pop());
+        String results = "";
         //将res中元素弹出,加上"/"
-        while(!newres.isEmpty()){
-            String temp = newres.pop();
-            results.append('/');
-            for(int k = 0; k < temp.length(); k++)
-                results.append(temp.charAt(k));
+        while(!res.isEmpty()){
+            String temp = res.pop();
+            results = "/" + temp + results;
         }
-        if(results.length() == 0)
-            results.append('/');
         return results.toString();
     }
 

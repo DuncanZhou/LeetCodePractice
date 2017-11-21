@@ -8,6 +8,20 @@ package question74;
 public class Solution {
     //二分查找
     public boolean searchMatrix(int[][] matrix, int target) {
+
+//        int i = 0, j = matrix[0].length - 1;
+//        while (i < matrix.length && j >= 0) {
+//            if (matrix[i][j] == target) {
+//                return true;
+//            } else if (matrix[i][j] > target) {
+//                j--;
+//            } else {
+//                i++;
+//            }
+//        }
+//
+//        return false;
+
         //在每行末尾做二分查找,在定位到行后再做二分查找
         int rowN = matrix.length;
         if(rowN == 0)

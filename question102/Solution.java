@@ -9,7 +9,6 @@ import java.util.Queue;
  * Created by duncan on 17-11-17.
  */
 
-
 class TreeNode {
      int val;
      TreeNode left;
