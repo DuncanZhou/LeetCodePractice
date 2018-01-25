@@ -19,8 +19,6 @@ public class Solution {
 //        }
 //        return allrows;
 
-
-
         List<List<Integer>> res = new ArrayList<>();
         if(numRows == 0)
             return res;

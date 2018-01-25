@@ -12,6 +12,17 @@ class ListNode {
 }
 public class Solution {
     public ListNode reverseList(ListNode head) {
+
+//递归
+//        if(head==null || head.next==null)
+//            return head;
+//        ListNode nextNode=head.next;
+//        ListNode newHead=reverseList(nextNode);
+//        nextNode.next=head;
+//        head.next=null;
+//        return newHead;
+
+
         if(head == null || head.next == null)
             return head;
         ListNode fakenode = new ListNode(0);

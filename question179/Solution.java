@@ -4,6 +4,20 @@ package question179;
  * Created by duncan on 18-1-14.
  */
 public class Solution {
+
+    // Comparator to decide which string should come first in concatenation
+//    Comparator<String> comp = new Comparator<String>(){
+//        @Override
+//        public int compare(String str1, String str2){
+//            String s1 = str1 + str2;
+//            String s2 = str2 + str1;
+//            return s2.compareTo(s1); // reverse order here, so we can do append() later
+//        }
+//    };
+//
+//		Arrays.sort(s_num, comp);
+
+
     public int compare(int a, int b){
         String num1 = String.valueOf(a);
         String num2 = String.valueOf(b);

@@ -51,6 +51,28 @@ public class Solution {
         return sum;
     }
 
+    //打印根节点到叶子节点路径(C++代码)
+//    void findPath(BinaryTreeNode*pRoot,vector<int>&path,int nToFind){
+//        if (pRoot==NULL)
+//        {
+//            return;
+//        }
+//        path.push_back(pRoot->m_nValue);
+//        if (pRoot->m_nValue==nToFind) //达到了子节点
+//        {
+//            printPath(path);
+//            return;      //找到了就返回，不需要再找了
+//        }
+//        if (pRoot->m_pLeft != NULL)//左子树
+//        {
+//            findPath(pRoot->m_pLeft, path,nToFind);
+//        }
+//        if (pRoot->m_pRight != NULL)//右子树
+//        {
+//            findPath(pRoot->m_pRight, path,nToFind);
+//        }
+//        path.pop_back();//在返回到父节点之前，在路径上删除当前节点
+//    }
     public static void main(String[] args) {
         Solution method = new Solution();
         TreeNode node1 = new TreeNode(1);

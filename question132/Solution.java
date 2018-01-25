@@ -7,9 +7,28 @@ public class Solution {
     //超时
     public int res;
     public int minCut(String s) {
-        res = s.length();
-        DFS(s,0);
-        return res;
+
+        char[] c = s.toCharArray();
+        int n = c.length;
+        int[] cut = new int[n];
+        boolean[][] pal = new boolean[n][n];
+
+        for(int i = 0; i < n; i++) {
+            int min = i;
+            for(int j = 0; j <= i; j++) {
+                //可划分
+                if(c[j] == c[i] && (j + 1 > i - 1 || pal[j + 1][i - 1])) {
+                    pal[j][i] = true;
+                    min = j == 0 ? 0 : Math.min(min, cut[j - 1] + 1);
+                }
+            }
+            cut[i] = min;
+        }
+        return cut[n - 1];
+
+//        res = s.length();
+//        DFS(s,0);
+//        return res;
     }
     public void DFS(String s,int cur){
         if(isPalindrom(s)) {
@@ -19,7 +38,7 @@ public class Solution {
         }
         //遍历切割的位置
         for(int i = s.length()-1;i >=0;i--){
-            if(isPalindrom(s.substring(i))){
+            if(isPalindrom(s.substring(i)) && cur + 1 < res){
                 //可切
                 DFS(s.substring(0,i),cur+1);
             }

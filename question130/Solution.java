@@ -43,7 +43,6 @@ public class Solution {
             }
         }
     }
-
     public static void main(String[] args) {
         Solution method = new Solution();
         char[][] board = {{'O','O'},{'O','O'}};

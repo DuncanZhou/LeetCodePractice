@@ -9,7 +9,7 @@ import java.util.List;
 public class Solution {
     public List<Integer> getRow(int rowIndex) {
         ArrayList<Integer> cur = new ArrayList<>();
-        for(int row = 0; row < rowIndex; row++){
+        for(int row = 0; row <= rowIndex; row++){
             cur.add(0,1);
             for(int index = 1; index < cur.size() - 1; index++)
                 cur.set(index,cur.get(index) + cur.get(index + 1));
@@ -19,6 +19,6 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution method = new Solution();
-        System.out.println(method.getRow(5));
+        System.out.println(method.getRow(3));
     }
 }
