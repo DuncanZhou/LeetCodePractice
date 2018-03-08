@@ -28,6 +28,15 @@ public class Solution {
     }
     //在二叉搜索树中找到两个结点的最低公共祖先
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+
+//        if(root.val > p.val && root.val > q.val){
+//            return lowestCommonAncestor(root.left, p, q);
+//        }else if(root.val < p.val && root.val < q.val){
+//            return lowestCommonAncestor(root.right, p, q);
+//        }else{
+//            return root;
+//        }
+
         //从根结点到p或q都访问一遍,找出共同的元素,如果没有,就是根结点
         List<TreeNode> path1 = SearchPath(root,p);
         List<TreeNode> path2 = SearchPath(root,q);

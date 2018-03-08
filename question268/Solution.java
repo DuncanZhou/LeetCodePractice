@@ -6,6 +6,13 @@ package question268;
 public class Solution {
     //找出连续的数中缺少了哪个数
     public int missingNumber(int[] nums) {
+
+//        int sum = nums.length;
+//        for (int i = 0; i < nums.length; i++)
+//            sum += i - nums[i];
+//        return sum;
+
+
         if(nums.length == 0)
             return 0;
         if(nums.length == 1)

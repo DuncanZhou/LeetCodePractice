@@ -9,6 +9,20 @@ import java.util.List;
 public class Solution {
     //找出排好序的数组中的范围
     public List<String> summaryRanges(int[] nums) {
+
+//        for(int i=0;i<nums.length;i++){
+//            int a=nums[i];
+//            while(i+1<nums.length&&(nums[i+1]-nums[i])==1){
+//                i++;
+//            }
+//            if(a!=nums[i]){
+//                list.add(a+"->"+nums[i]);
+//            }else{
+//                list.add(a+"");
+//            }
+//        }
+
+
         List<String> res = new ArrayList<>();
         if(nums == null || nums.length == 0)
             return res;

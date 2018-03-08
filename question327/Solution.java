@@ -1,5 +1,9 @@
 package question327;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Created by duncan on 18-3-2.
  */
