@@ -16,21 +16,21 @@ public class Solution {
         Arrays.sort(nums);
         int target = sum / k;
         if(nums[nums.length - 1] > target) return false;
-        return helper(nums,res,0,target);
+        return helper(nums,res,nums.length-1,target);
     }
     private boolean helper(int[] nums,int[] res,int index,int target){
-        if(index == nums.length){
+        if(index == -1){
             boolean flag = true;
             for(int i = 0; i < res.length; i++)
                 if(res[i] != target){flag = false; break;}
             return flag;
         }else{
             for(int i = 0; i < res.length; i++){
-                if(res[i] == target) continue;
-                else if(res[i] + nums[index] > target) return false;
-                res[i] += nums[index];
-                if(helper(nums,res,index+1,target)) return true;
-                res[i] -= nums[index];
+                if(res[i] + nums[index] <= target) {
+                    res[i] += nums[index];
+                    if (helper(nums, res, index - 1, target)) return true;
+                    res[i] -= nums[index];
+                }
             }
         }
         return false;
