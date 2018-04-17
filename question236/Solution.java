@@ -16,15 +16,27 @@ class TreeNode {
 }
 public class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        List<TreeNode> ppath = new ArrayList<>();
-        List<TreeNode> qpath = new ArrayList<>();
-        Search(root,p,ppath,new ArrayList<>());
-        Search(root,q,qpath,new ArrayList<>());
-        //寻找ppath和qpath前半段相同处
-        int i;
-        for(i = 0; i < Math.min(ppath.size(),qpath.size()); i++)
-            if(ppath.get(i) != qpath.get(i)) break;
-        return ppath.get(i-1);
+        //如果root为空树或者等于其中一个则直接返回
+        if(root == null || root == p || root == q) return root;
+        //分三种情况,
+        // 1.p,q都处于root左子树
+        // 2.p,q都处于root右子树
+        // 3.p,q分别位于root左右子树
+        TreeNode left = lowestCommonAncestor(root.left,p,q);
+        TreeNode right = lowestCommonAncestor(root.right,p,q);
+        //p,q位于两颗不同子树
+        if(left != null && right != null) return root;
+        //p,q处于同一颗树中
+        return left == null ? right : left;
+//        List<TreeNode> ppath = new ArrayList<>();
+//        List<TreeNode> qpath = new ArrayList<>();
+//        Search(root,p,ppath,new ArrayList<>());
+//        Search(root,q,qpath,new ArrayList<>());
+//        //寻找ppath和qpath前半段相同处
+//        int i;
+//        for(i = 0; i < Math.min(ppath.size(),qpath.size()); i++)
+//            if(ppath.get(i) != qpath.get(i)) break;
+//        return ppath.get(i-1);
     }
     private void Search(TreeNode root,TreeNode target,List<TreeNode> res,List<TreeNode> cur){
         if(root == null || root == target){
@@ -36,6 +48,7 @@ public class Solution {
         }
         cur.add(root);
         Search(root.left,target,res,cur);
+        //左子树已经找到,无须再在右子树找
         if(res.size() != 0) return;
         Search(root.right,target,res,cur);
         cur.remove(cur.size()-1);
