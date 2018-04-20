@@ -31,24 +31,38 @@ public class Solution {
     //合并a,b链表
     private Node Merge(Node a,Node b){
         Node fakeNode = new Node(0);
-        Node p = fakeNode;
-        while(a != null && b != null){
-            if(a.val < b.val){
-                p.next = new Node(a.val);
-                a = a.next;
-            }else{
-                p.next = new Node(b.val);
-                b = b.next;
+        fakeNode.next = a;
+        Node p1 = fakeNode,p2 = b;
+        //将b链表中的结点插入到p1中
+        while(p1.next != null && p2 != null){
+            if(p1.next.val >= p2.val){
+                b = p2.next;
+                //插入
+                p2.next = p1.next;
+                p1.next = p2;
+                p2 = b;
             }
-            p = p.next;
+            p1 = p1.next;
         }
-        //加入未判断完的
-        Node c = a != null ? a : b;
-        while(c != null){
-            p.next = new Node(c.val);
-            p = p.next;
-            c = c.next;
-        }
+        //将p2中未判断的元素加入
+        if(p1.next == null) p1.next = p2;
+//        while(a != null && b != null){
+//            if(a.val < b.val){
+//                p.next = new Node(a.val);
+//                a = a.next;
+//            }else{
+//                p.next = new Node(b.val);
+//                b = b.next;
+//            }
+//            p = p.next;
+//        }
+//        //加入未判断完的
+//        Node c = a != null ? a : b;
+//        while(c != null){
+//            p.next = new Node(c.val);
+//            p = p.next;
+//            c = c.next;
+//        }
         return fakeNode.next;
     }
     public static void main(String[] args) {
