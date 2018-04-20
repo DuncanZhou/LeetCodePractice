@@ -46,23 +46,6 @@ public class Solution {
         }
         //将p2中未判断的元素加入
         if(p1.next == null) p1.next = p2;
-//        while(a != null && b != null){
-//            if(a.val < b.val){
-//                p.next = new Node(a.val);
-//                a = a.next;
-//            }else{
-//                p.next = new Node(b.val);
-//                b = b.next;
-//            }
-//            p = p.next;
-//        }
-//        //加入未判断完的
-//        Node c = a != null ? a : b;
-//        while(c != null){
-//            p.next = new Node(c.val);
-//            p = p.next;
-//            c = c.next;
-//        }
         return fakeNode.next;
     }
     public static void main(String[] args) {
