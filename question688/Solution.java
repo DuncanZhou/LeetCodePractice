@@ -1,11 +1,33 @@
 package question688;
 
+import java.util.Arrays;
+
 public class Solution {
     //回溯法超时
     int res = 0;
     public double knightProbability(int N, int K, int r, int c) {
-        dfs(N,K,r,c);
-        return res * 1.0 / Math.pow(8,K);
+//        dfs(N,K,r,c);
+//        return res * 1.0 / Math.pow(8,K);
+
+        //动态规划解决
+        int[][] moves = {{1,2},{-1,2},{1,-2},{-1,-2},{2,1},{-2,1},{2,-1},{-2,-1}};
+        double[][] dp0 = new double[N][N];
+        for(int i = 0; i < dp0.length; i++) Arrays.fill(dp0[i],1);
+        for(int step = 0; step < K; step++){
+            double[][] dp1 = new double[N][N];
+            for(int i = 0; i < N; i++){
+                for(int j = 0; j < N; j++){
+                    for(int[] move : moves){
+                        int x = i + move[0];
+                        int y = j + move[1];
+                        if(x < 0 || x >= N || y < 0 || y >= N) continue;
+                        dp1[i][j] += dp0[x][y];
+                    }
+                }
+            }
+            dp0 = dp1;
+        }
+        return dp0[r][c] / Math.pow(8,K);
     }
     private void dfs(int N, int k, int curx, int cury){
         if(curx < 0 || curx >= N || cury < 0 || cury >= N) return;
